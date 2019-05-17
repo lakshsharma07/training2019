@@ -1,0 +1,28 @@
+[{
+ 		"info": {
+ 			"first_name": "kunal",
+ 			"last_name": "sharma"
+ 		},
+ 		"pic": "https://www.google.com/imgres?imgurl=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D1994880600811677&imgrefurl=https%3A%2F%2Fwww.facebook.com%2Fdikdikpics%2F&docid=_Hv882c7xM2ifM&tbnid=w2c1MBz_Vme9zM%3A&vet=10ahUKEwiP-tquoJriAhWJpY8KHc28CQkQMwhHKAcwBw..i&w=645&h=626&bih=754&biw=1536&q=random%20pic&ved=0ahUKEwiP-tquoJriAhWJpY8KHc28CQkQMwhHKAcwBw&iact=mrc&uact=8",
+ 		"department": "computer science",
+ 		"research areas": ["coading", "devloping"],
+ 		"contact detail": {
+ 			"mobile": 9489392830,
+ 			"email id": "kunal@gmail.com"
+ 		}
+ 	},
+ 	{
+ 		"info": {
+ 			"first_name": "hitesh",
+ 			"last_name": "sharma"
+ 		},
+ 		"pic": "https://www.google.com/imgres?imgurl=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D1994880600811677&imgrefurl=https%3A%2F%2Fwww.facebook.com%2Fdikdikpics%2F&docid=_Hv882c7xM2ifM&tbnid=w2c1MBz_Vme9zM%3A&vet=10ahUKEwiP-tquoJriAhWJpY8KHc28CQkQMwhHKAcwBw..i&w=645&h=626&bih=754&biw=1536&q=random%20pic&ved=0ahUKEwiP-tquoJriAhWJpY8KHc28CQkQMwhHKAcwBw&iact=mrc&uact=8",
+ 		"department": "electrical",
+ 		"research areas": ["devloper", "elctrical"],
+ 		"contact detail": {
+ 			"mobile": 9489392899,
+ 			"email id": "hitesh@gmail.com"
+ 		}
+ 	}
+ ]
+ 
