@@ -1,0 +1,100 @@
+
+"""
+Code Challenge
+  Name: 
+    URL shortening service Bitly
+  Filename: 
+    bitly.py
+  Problem Statement:
+    (usagov_bitly_data.json)
+    In 2011, URL shortening service Bitly partnered with the US government website
+    USA.gov to provide a feed of anonymous data gathered from users who shorten links
+    ending with .gov or .mil. 
+    In 2011, a live feed as well as hourly snapshots were available
+    as downloadable text files. 
+    This service is shut down at the time of this writing (2017),
+    but we preserved one of the data files.
+    In the case of the hourly snapshots, each line in each file contains a common form of
+    web data known as JSON. (Use usagov_bitly_data.txt file from Resources)
+
+    Replace the 'nan' values with 'Mising' and ' ' values with 'Unknown' keywords
+    Print top 10 most frequent time-zones from the Dataset i.e. 'tz', with and without Pandas
+    Count the number of occurrence for each time-zone
+    Plot a bar Graph to show the frequency of top 10 time-zones (using Seaborn)
+    From field 'a' which contains browser information and separate out browser capability(i.e. the first token in the string eg. Mozilla/5.0)
+    Count the number of occurrence for separated browser capability field and plot bar graph for top 5 values (using Seaborn)
+    Add a new Column as 'os' in the dataset, separate users by 'Windows' for the values in  browser information column i.e. 'a' that contains "Windows" and "Not Windows" for those who don't
+
+Hint:
+    http://1usagov.measuredvoice.com/2011/
+    
+"""
+
+
+# Importing pandas module for performing the DataFrame operations
+import pandas as pd
+
+# For using np.nan I imported numpy module
+import numpy as np
+
+# I imported collections.Counter to check the timezones frequency
+from collections import Counter
+
+try:
+    # Creating the dataframe of the json file containing all the url shortener hits
+    # pandas.read_json is convert json string to pandas object
+    # lines parameter reads the file as json object per line
+    json_df = pd.read_json("usagov_bitly_data.json", lines=True)
+
+    # Repalcing some data with some other data
+    # pandas.DataFrame.replace(to_replace=None, value=None,) - Replace values given in to_replace with 'value'.
+    json_df = json_df.replace([np.nan, ""], ["Mising", "Unknown"])
+
+    # Getting the top 10 timezones frequency using pandas method
+    json_df_tz = json_df['tz'].value_counts().head(10)
+
+    # Getting the top 10 timezones frequency not using pandas method
+    json_tz = Counter(json_df['tz'])
+
+    json_tz = sorted(json_tz.items(), key=lambda x: x[1], reverse=True)
+
+    json_tz = json_tz[:10]
+
+    # Getting frequency of each timezones
+    tz_count = json_df['tz'].value_counts()
+
+    # To draw the top 10 timezones frequnecy bar graph for a series we can use Series.plot.type()
+    json_df_tz.plot.bar()
+
+    # ************************************ #
+    # Fetching the browser capability i.e the first token (^\w+\/[\d\.\d]*)
+
+    # Spiliting the Fetched series of browser info. according to tokens
+    tokens_df = json_df['a'].str.split(n=1, expand=True).add_prefix("Token_")
+
+    # Fetching the frequency of the browser capability
+    tokens_frequency = tokens_df['Token_0'].value_counts()
+
+    # Plotting bar graph for top 5 browser capability
+    tokens_frequency.head().plot.bar()
+
+    # Filling the missing values in the token parts with mising string
+    tokens_df = tokens_df.replace(np.nan, 'Mising')
+
+    # ******************************************** #
+    # Classifying as windows os and non-windows os
+
+    # Initializing the os column as Not windows
+    tokens_df["os"] = 'Not Windows'
+
+    # Applying the conditions to find the windows os user and initializing their os column as Windows
+    tokens_df["os"][tokens_df["Token_1"].str.find("Windows") != -1] = "Windows"
+
+except ValueError as e:
+    print(e)
+
+except AttributeError as e:
+    print(e)
+
+except TypeError as e:
+    print(e)
