@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20em;
+  grid-row-gap: 30px;
+  padding: 20px;
+  background-color:#008080;
+    
+}
+
+.grid-container > div {
+  background-color:#FF6347;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 30px;
+  margin-right:20px;
+  margin-left:20px;
+  
+  text-align: center;
+}
+.item1 img {
+  width: 150px;
+  border-radius: 50%;
+  
+}
+.item2 {
+  width: 500px;
+  margin: auto;
+}
+marquee{
+color:white;}
+
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body style="background:#008080">
+
+<h1  text-align="center">The grid-column-gap Property</h1>
+<marquee style="background:#003300">{{status[2]}}</marquee>
+
+
+<p>Use the <em>grid-column-gap</em> property to specify the size of the gap between the columns.</p>
+<p>This grid has a 50px gap between columns (and a 10px gap between rows):</p>
+
+<div class="grid-container">
+  <div class="item1">
+  <h2>{{ user1 }}</h2>
+  <img src={{status[3]}}>
+  <table style="width:80%">
+   {% for key, value in status[0].items() %}
+    <tr>
+        <th>{{ key }}</th>
+        <td>{{ value }}</td>
+    </tr>
+   {% endfor %}
+</table></div>
+  <div class="item1">
+  <h2>{{ user2 }}</h2>
+  <table style="width:80%">
+  <img src={{status[4]}} >
+   {% for key, value in status[1].items() %}
+    <tr>
+        <th>{{ key }}</th>
+        <td>{{ value }}</td>
+    </tr>
+   {% endfor %}
+</table></div>
+  
+</div>
+<p><h2>This graph analysis the features of both the users. property to specify the size of the gap between the columns.This grid has a 50px gap between columns (and a 10px gap between rows)</h2>
+</p>
+<div class="item2">
+    <!--<p><img src="/static/images/fig.png" alt="kites" align="middle"></p>-->
+    {{ div_placeholder }}
+</div>
+<a href="http://localhost:8000/detail" class="button">Detail</a>
+</body>
+</html>
